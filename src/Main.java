@@ -7,43 +7,55 @@ public class Main {
         ArrayList<Produto> estoque = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
 
-        while (true){
-        System.out.println("------------------");
-        System.out.println("Sistema de Estoque");
-        System.out.println("------------------");
+        while (true) {
+            System.out.println("------------------");
+            System.out.println("Sistema de Estoque");
+            System.out.println("------------------");
 
-        System.out.println("Escolha uma opção: ");
-        System.out.println("1 - Cadastrar produto");
-        System.out.println("2 - Listar produto");
+            System.out.println("Escolha uma opção: ");
+            System.out.println("1 - Cadastrar produto");
+            System.out.println("2 - Listar produto");
 
-        int opcao = sc.nextInt();
-        sc.nextLine();
-
-        if (opcao == 1) {
-            System.out.println("Digite o código do produto: ");
-            String codigoID = sc.nextLine();
-
-            System.out.println("Digite o nome do produto: ");
-            String nome = sc.nextLine();
-
-            System.out.println("Digite a descrição do produto: ");
-            String descricao = sc.nextLine();
-
-            System.out.println("Digite a quantidade do produto: ");
-            int quantidade = sc.nextInt();
-
-            System.out.println("Digite o preço do produto: ");
-            double preco = sc.nextDouble();
+            int opcao = sc.nextInt();
             sc.nextLine();
 
-            //criando um objeto Produto para os dados digitados
-            Produto produto = new Produto(codigoID, preco, quantidade, descricao, nome);
+            if (opcao == 1) {
+                System.out.println("Digite o código do produto: ");
+                String codigoID = sc.nextLine();
 
-            estoque.add(produto);
-            System.out.println("Produto cadastrado com sucesso!");
+                System.out.println("Digite o nome do produto: ");
+                String nome = sc.nextLine();
 
-        }
+                System.out.println("Digite a descrição do produto: ");
+                String descricao = sc.nextLine();
 
+                System.out.println("Digite a quantidade do produto: ");
+                int quantidade = sc.nextInt();
+
+                System.out.println("Digite o preço do produto: ");
+                double preco = sc.nextDouble();
+                sc.nextLine();
+
+                //criando um objeto Produto para os dados digitados
+                Produto produto = new Produto(codigoID, preco, quantidade, descricao, nome);
+
+                estoque.add(produto);
+                System.out.println("Produto cadastrado com sucesso!");
+            } else if (opcao == 2) {
+                if (estoque.isEmpty()) {
+                    System.out.println("Nenhum produto cadastrado.");
+                } else {
+                    System.out.println("Produtos cadastrados: ");
+                    for (Produto p : estoque) {
+                        System.out.println("Código: " + p.getCodigoID());
+                        System.out.println("Nome: " + p.getNome());
+                        System.out.println("Descrição: " + p.getDescricao());
+                        System.out.println("Quantidade: " + p.getQuantidade());
+                        System.out.println("Preço: R$ " + p.getPreco());
+                        System.out.println("--------------------");
+                    }
+                }
+            }
         }
     }
 }
